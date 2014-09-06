@@ -102,14 +102,22 @@ function returnObj (index, cursor, res) {
 }
 
 /* GET call to the API */
-router.get('/api', function(req, res) {
+router.get('/api', execGet);
+
+function execGet(req, res, count) { 
+	count = (count || 0);
 	console.log(req.body);
 	// Connect to the db
 	// TODO: fix the URL for heroku!
 	MongoClient.connect(app.get('mongo'), function(err, db) {
-		console.log(app.get('mongo'));
 		if (err) {
-			res.status(500).send({"msg": "db is down"});
+			if (count > 2) {
+				res.status(500).send({"msg": "db is down"});
+				return;
+			} else {
+				execGet(req, res, count);
+				return;
+			}
 		}
 		if (req.body) {
 			var query = makeQuery(req.body);
@@ -127,7 +135,8 @@ router.get('/api', function(req, res) {
 		var cursor = collection.find(query);
 		handleCursor(cursor, req, res);
 	});
-});
+
+}
 
 function parseBody(body, res) {
 	var recipe = {};
@@ -176,11 +185,20 @@ function parseBody(body, res) {
 	return recipe
 }
 
-router.post('/api', function(req, res) {
+router.post('/api', execPost);
+
+function execPost(req, res, count) {
+	count = (count || 0);
 	MongoClient.connect(app.get('mongo'), function(err, db) {
 		console.log(app.get('mongo'));
 		if (err) {
-			res.status(500).send({"msg": "db is down"});
+			if (count > 2) {
+				res.status(500).send({"msg": "db is down"});
+				return;
+			} else {
+				execPost(req, res, count + 1);
+				return;
+			}
 		}
 		if (req.body) {
 			try {
@@ -204,6 +222,6 @@ router.post('/api', function(req, res) {
 			}
 		});
 	});	
-});
+}
 
 module.exports = router;
