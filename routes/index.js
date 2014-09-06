@@ -3,6 +3,10 @@ var router = express.Router();
 var MongoClient = require('mongodb').MongoClient;
 var ObjectID = require('mongodb').ObjectID;
 
+var app = express();
+app.set('mongo', (process.env.MONGOHQ_URL || "mongodb://localhost:27017/cocktails"));
+
+
 /* GET home page. */
 router.get('/', function(req, res) {
   res.render('index', { title: 'Express' });
