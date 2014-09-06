@@ -10,6 +10,48 @@ var users = require('./routes/users');
 
 var app = express();
 
+// Get our file data
+var fs = require('fs');
+var cocktailData = fs.readFileSync('./cocktails.json', { "encoding": "utf8" });
+cocktailData = JSON.parse(cocktailData);
+// console.log(data);
+
+// Retrieve
+var MongoClient = require('mongodb').MongoClient;
+
+function handleDBErr(err, result) {
+	if (err) {
+		console.log("DB errored with result: " + result);
+	} else {
+		console.log("Success!");
+	}
+}
+
+// TODO: remove for prod
+function printFind(err, items) {
+	if (err) {
+		console.log("Find errored out");
+	} else {
+		console.log(items);
+	}
+}
+
+// Connect to the db
+// TODO: fix the URL for heroku!
+MongoClient.connect("mongodb://localhost:27017/cocktails", function(err, db) {
+	if(!err) {
+		console.log("We are connected");
+
+		var collection = db.collection('cocktails');
+		collection.insert(cocktailData.cocktails, {w:1}, handleDBErr);
+		// collection.find().toArray(printFind);
+		// var drinkQuery  = {
+		//	"ingredients.Lime Juice": { $exists: true }
+		// }
+		// collection.find(drinkQuery).toArray(printFind);
+	}
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -27,9 +69,9 @@ app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-    var err = new Error('Not Found');
-    err.status = 404;
-    next(err);
+	var err = new Error('Not Found');
+	err.status = 404;
+	next(err);
 });
 
 // error handlers
@@ -37,23 +79,23 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-    app.use(function(err, req, res, next) {
-        res.status(err.status || 500);
-        res.render('error', {
-            message: err.message,
-            error: err
-        });
-    });
+	app.use(function(err, req, res, next) {
+		res.status(err.status || 500);
+		res.render('error', {
+			message: err.message,
+			error: err
+		});
+	});
 }
 
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
+	res.status(err.status || 500);
+	res.render('error', {
+		message: err.message,
+		error: {}
+	});
 });
 
 
