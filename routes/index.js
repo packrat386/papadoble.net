@@ -136,7 +136,7 @@ function parseBody(body, res) {
 		recipe.name += body.name;
 	} else {
 		res.status(400).send({"msg": "no name"});
-		return;
+		return undefined;
 	}
 
 	if (body.hasOwnProperty("ingredients")) {
@@ -147,7 +147,7 @@ function parseBody(body, res) {
 		}
 	} else {
 		res.status(400).send({"msg": "no ingredients"});
-		return;
+		return undefined;
 	}
 
 	if (body.hasOwnProperty("instructions")) {
@@ -155,7 +155,7 @@ function parseBody(body, res) {
 		recipe.instructions += body.instructions;
 	} else {
 		res.status(400).send({"msg": "no instructions"});
-		return;
+		return undefined;
 	}
 
 	if (body.hasOwnProperty("source")) {
@@ -163,7 +163,7 @@ function parseBody(body, res) {
 		recipe.source += body.source;
 	} else {
 		res.status(400).send({"msg": "no source"});
-		return;
+		return undefined;
 	}
 
 	if (body.hasOwnProperty("book")) {
@@ -171,7 +171,7 @@ function parseBody(body, res) {
 		recipe.book += body.book;
 	} else {
 		res.status(400).send({"msg": "no book"});
-		return;
+		return undefined;
 	}
 	return recipe
 }
@@ -185,6 +185,9 @@ router.post('/api', function(req, res) {
 		if (req.body) {
 			try {
 				var r = parseBody(req.body, res);
+				if (r == undefined) {
+					return;
+				}
 			} catch (err) {
 				res.status(500).send({"msg": "couldn't parse that, got err: " + err});
 				return;
