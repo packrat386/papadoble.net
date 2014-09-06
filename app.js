@@ -39,7 +39,7 @@ function handleDBErr(err, result) {
 
 function loadData(err, col) {
 	MongoClient.connect(app.get('mongo'), function(err, db) {
-		console.log(app.get('mongo');
+		console.log(app.get('mongo'));
 		if(!err) {
 			// put our data in
 			var collection = db.collection('cocktails');
