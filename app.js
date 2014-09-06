@@ -12,8 +12,6 @@ if (process.env.MONGOHQ_URL != "" && process.env.MONGOHQ_URL != undefined) {
 }
 console.log(PATH);
 
-var routes = require('./routes/index');
-
 var app = express();
 
 // Body Parsing
@@ -73,7 +71,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+var api = require('./routes/api');
+var root = require('./routes/root');
+var find = require('./routes/find');
+var submit = require('./routes/submit');
+
+app.use('/api', api);
+app.use('/', root);
+app.use('/find', find);
+app.use('/submit', submit);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
