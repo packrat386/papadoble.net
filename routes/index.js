@@ -105,7 +105,9 @@ function returnObj (index, cursor, res) {
 router.get('/api', execGet);
 
 function execGet(req, res, count) { 
-	count = (count || 0);
+	if (typeof count === undefined) {
+		count = 0;
+	}
 	console.log(req.body);
 	// Connect to the db
 	// TODO: fix the URL for heroku!
@@ -188,7 +190,9 @@ function parseBody(body, res) {
 router.post('/api', execPost);
 
 function execPost(req, res, count) {
-	count = (count || 0);
+	if (typeof count === undefined) {
+		count = 0;
+	}
 	MongoClient.connect(app.get('mongo'), function(err, db) {
 		console.log(app.get('mongo'));
 		if (err) {
