@@ -59,38 +59,40 @@ function makeRegex(str) {
 }
 
 // get the requisite item out of a cursor
-function handleCursor(cursor, req, res) {
+function handleCursor(cursor, req, res, db) {
 	if (res.body && res.body.hasOwnProperty('story')) {
-		returnHash(hash, cursor, res);
+		returnHash(hash, cursor, res, db);
 	} else {
-		returnRand(cursor, res);
+		returnRand(cursor, res, db);
 	}
 }
 
 // returns the item specified by a specifif hash, returns 404 if empty
-function returnHash(hash, cursor, res) {
+function returnHash(hash, cursor, res, db) {
 	cursor.count(function(err, count) {
 		if (count == 0) {
 			res.status(400).send({"msg": "no match"});
+			db.close();
 		} else {
-			returnObj(hash % count, cursor, res);
+			returnObj(hash % count, cursor, res, db);
 		}
 	});
 
 }
 
 // return a random item within a cursor, returns 404 if empty
-function returnRand (cursor, res) {
+function returnRand (cursor, res, db) {
 	cursor.count(function(err, count) {
 		if (count == 0) {
 			res.status(404).send({"msg": "no match"});
+			db.close();
 		} else {
-			returnObj(getRandomInt(0, count), cursor, res);
+			returnObj(getRandomInt(0, count), cursor, res, db);
 		}
 	});
 } 
 
-function returnObj (index, cursor, res) {
+function returnObj (index, cursor, res, db) {
 	cursor.skip(index);
 	cursor.nextObject(function(err, item) {
 		if (!err) {
@@ -98,6 +100,7 @@ function returnObj (index, cursor, res) {
 		} else {
 			res.status(500).send({"msg": "we goofed on the index"});
 		}
+		db.close();
 	});
 }
 
@@ -111,6 +114,7 @@ function execGet(req, res) {
 	MongoClient.connect(app.get('mongo'), function(err, db) {
 		if (err) {
 			res.status(500).send({"msg": "db is down"});
+			db.close();
 			return;
 		}
 		if (req.body) {
@@ -127,7 +131,7 @@ function execGet(req, res) {
 		}
 		
 		var cursor = collection.find(query);
-		handleCursor(cursor, req, res);
+		handleCursor(cursor, req, res, db);
 	});
 
 }
@@ -186,20 +190,24 @@ function execPost(req, res) {
 		console.log(app.get('mongo'));
 		if (err) {
 			res.status(500).send({"msg": "db is down"});
+			db.close()
 			return;
 		}
 		if (req.body) {
 			try {
 				var r = parseBody(req.body, res);
 				if (r == undefined) {
+					db.close();
 					return;
 				}
 			} catch (err) {
 				res.status(500).send({"msg": "couldn't parse that, got err: " + err});
+				db.close()
 				return;
 			}
 		} else {
 			res.status(400).send("no request");
+			db.close()
 			return;
 		}
 		
@@ -208,6 +216,7 @@ function execPost(req, res) {
 			if (!err) {
 				res.status(200).send({ "msg": "OK!", "result": result});
 			}
+			db.close();
 		});
 	});	
 }
