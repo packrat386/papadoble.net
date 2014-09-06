@@ -97,7 +97,7 @@ router.get('/api', function(req, res) {
 	console.log(req.body);
 	// Connect to the db
 	// TODO: fix the URL for heroku!
-	MongoClient.connect("mongodb://localhost:27017/cocktails", function(err, db) {
+	MongoClient.connect(PATH, function(err, db) {
 		if (err) {
 			res.status(500).send({"msg": "db is down"});
 		}
@@ -167,7 +167,7 @@ function parseBody(body, res) {
 }
 
 router.post('/api', function(req, res) {
-	MongoClient.connect("mongodb://localhost:27017/cocktails", function(err, db) {
+	MongoClient.connect(PATH, function(err, db) {
 		if (err) {
 			res.status(500).send({"msg": "db is down"});
 		}

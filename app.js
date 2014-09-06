@@ -5,6 +5,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+if (process.env.MONGOHQ_URL != "") {
+	var PATH = process.env.MONGOHQ_URL;
+} else {
+	var PATH = "mongodb://localhost:27017/cocktails";
+}
+
 var routes = require('./routes/index');
 
 var app = express();
@@ -29,7 +35,7 @@ function handleDBErr(err, result) {
 }
 
 function loadData(err, col) {
-	MongoClient.connect("mongodb://localhost:27017/cocktails", function(err, db) {
+	MongoClient.connect(PATH, function(err, db) {
 		if(!err) {
 			// put our data in
 			var collection = db.collection('cocktails');
