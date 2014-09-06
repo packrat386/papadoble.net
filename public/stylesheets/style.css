@@ -1,8 +1,39 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
 a {
   color: #00B7FF;
+}
+
+.content {
+    max-width: 1000px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: auto;
+}
+
+.h-menu {
+    background-color: #ddd !important;
+    margin-bottom: 20px;
+}
+
+.output {
+    margin-top: 20px;
+    margin-left: 80px;
+    margin-right: 40px;
+    padding: 20px;
+    background-color: #111;
+    border-radius: 5px;
+    color: #fff;
+    line-height: 150%;
+    font-family:Consolas,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New, monospace;
+}
+
+.success {
+    background-color: rgb(28, 184, 65) !important; /* this is a green */
+}
+
+.error {
+    background-color: rgb(202, 60, 60) !important; /* this is a maroon */
+}
+
+.warning {
+   background-color: rgb(223, 117, 20) !important; /* this is an orange */
 }

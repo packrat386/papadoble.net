@@ -1,21 +1,57 @@
 var express = require('express');
 var router = express.Router();
+var http = require('http');
+var request = require('request')
 
-/* GET home page. */
-router.get('/book', function(req, res) {
-  res.render('findBook', { title: 'Find by Book' });
-});
-
-router.get('/ingredient', function(req, res) {
-  res.render('findIngredient', { title: 'Find by Ingredient' });
-});
-
-router.get('/id', function(req, res) {
-  res.render('findId', { title: 'Find by ID' });
-});
-
+/* GET find page. */
 router.get('/', function(req, res) {
-  res.render('find', { title: 'Find a Drink' });
+	var reqobj = {
+		method: "get",
+		json: {},
+		url: "http://papadoble.herokuapp.com/api"
+	};
+	
+	console.log("json is");
+	console.log(reqobj.json);
+
+	request(reqobj, function(err, resp, body){
+		var statusCode = resp.statusCode;
+		// console.log(resp);
+		// console.log(body);
+		res.render('find', { title: 'Find a Drink', res: JSON.stringify(body, undefined, 2)});
+	});
+});
+
+router.post('/', function(req, res) {
+	var data = {};
+	if (req.body.ingredient && req.body.ingredient != '') {
+		data.ingredient = req.body.ingredient;
+	}
+	if (req.body.book && req.body.book != '') {
+		data.book = req.body.book;
+	}
+	if (req.body.story && req.body.story != '') {
+		data.story = req.body.story;
+	}
+	if (req.body.core && req.body.core == 'on') {
+		data.core = false;
+	}
+	
+	var reqobj = {
+		method: "get",
+		json: data,
+		url: "http://papadoble.herokuapp.com/api"
+	};
+	
+	console.log("json is");
+	console.log(reqobj.json);
+
+	request(reqobj, function(err, resp, body){
+		var statusCode = resp.statusCode;
+		// console.log(resp);
+		console.log(body);
+		res.render('find', { title: 'Find a Drink', res: JSON.stringify(body, undefined, 2)});
+	});
 });
 
 module.exports = router;

@@ -1,11 +1,54 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<% include header.ejs %>
+<h1>PapaDoble API</h1>
+<p>The api supports GET requests to get recipes with certain constraints, and POST requests to add recipes to the non-core API. Currently there are no libraries to interact with PapaDoble, so writing your own is left as an excercise to the reader.<p>
+<h3>GET Requests</h3>
+<p>Get Requests take the form:</p>
+<div class="output">
+  <p>
+    <pre>
+    {
+    &#9;&quot;ingredient&quot;: string, &#9;// An ingredient to make a cocktail around.
+    &#9;&quot;book&quot;: string, &#9; // A Book to pair with a cocktail.
+    &#9;&quot;id&quot;: string, &#9; // The database ID of the desired drink.
+    &#9;&quot;story&quot;: string, &#9; // How was your day?
+    &#9;&quot;core&quot;: bool &#9; // If set to false, searches community submissions and not the core cocktails that I have compiled.
+    }</pre>
+  </p>
+</div>
+<p>All of the fields are optional. The default for core is true. If no cocktail matches the specifications in the request, the API will return a 404. On a 200 the API will return a recipe of the form</p>
+<div class="output">
+  <p>
+    <pre>
+    {
+    &#9;&quot;name&quot;: string, &#9;
+    &#9;&quot;ingredients&quot;: {
+    &#9;&#9;&quot;ing1&quot;: amt,
+    &#9;&#9;&quot;ing2&quot;: amt,
+    &#9;&#9;&quot;etc&quot;: amt,
+    &#9;}
+    &#9;&quot;book&quot;: string, &#9;
+    &#9;&quot;source&quot;: string, &#9; // Where I got the recipe from
+    &#9;&quot;_id&quot;: string &#9;
+    }</pre>
+  </p>
+</div>
+<p>I believe these fields to be relatively self-explanatory. In the case of a non 200 status, an object of the form <pre>{ "msg": string }</pre> will be returned to indicate what went wrong</p>
+<h3>POST Requests</h3>
+<p>POST requests are accepted  in order to add recipes to the non-core library of recipes. Recipes may be posted in the following form.</p>
+<div class="output">
+  <p>
+    <pre>
+    {
+    &#9;&quot;name&quot;: string, &#9;
+    &#9;&quot;ingredients&quot;: {
+    &#9;&#9;&quot;ing1&quot;: amt,
+    &#9;&#9;&quot;ing2&quot;: amt,
+    &#9;&#9;&quot;etc&quot;: amt,
+    &#9;}
+    &#9;&quot;book&quot;: string, &#9;
+    &#9;&quot;source&quot;: string &#9; // Where I got the recipe from
+    }</pre>
+  </p>
+</div>
+<p>You will note that this looks very similar to the format returned by the GET request. All of the fields and required, and the response is the same as for the GET request (the object if you get a 200, in any other case an object that contains a message).</p>
+<% include footer.ejs %>

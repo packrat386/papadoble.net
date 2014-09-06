@@ -1,11 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<% include header.ejs %>
+<img src="images/papadoble.jpg" style="max-height: 300px; display:block; margin-left: auto; margin-right: auto">
+<div class="output">
+  <p>
+    $ echo $PAPADOBLE<br>
+    An API for literary cocktails!<br>
+    $ curl -XGET http://papadoble.net/api <br>
+{"name":"Martini","ingredients":{"gin":"2 oz","vermouth":".25 oz"},"instructions":"Shake with ice and strain into a glass. Garnish with an olice","source":"Wikipedia","book":"Garden of Eden","_id":"540b46fdcbc10b0b002d976d"}
+  </p>
+</div>
+<% include footer %>
