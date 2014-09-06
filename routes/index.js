@@ -42,7 +42,11 @@ function makeQuery(body) {
 		query[prop] = { $exists: true };  
 	}
 	if (body.hasOwnProperty("id")) {
-		query["_id"] = new ObjectID(body["id"]);
+		try {
+			query["_id"] = new ObjectID(body["id"]);
+		} catch (err) {
+			res.status(400).send('{"msg": "bad id"}');
+		}
 	}
 	return query;
 }
