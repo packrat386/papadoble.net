@@ -1,0 +1,17 @@
+var express = require('express');
+var router = express.Router();
+
+/* GET home page. */
+router.get('/submit', function(req, res) {
+  res.render('submit', { title: 'Submit Your Own Drink' });
+});
+
+router.get('/about', function(req, res) {
+  res.render('about', { title: 'About' });
+});
+
+router.get('/doc', function(req, res) {
+  res.render('doc', { title: 'Documentation' });
+});
+
+module.exports = router;
