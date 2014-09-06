@@ -85,7 +85,6 @@ function returnObj (index, cursor, res) {
 	cursor.skip(index);
 	cursor.nextObject(function(err, item) {
 		if (!err) {
-			console.log(item);
 			res.status(200).send(item);
 		} else {
 			res.status(500).send({"msg": "we goofed on the index"});
@@ -108,11 +107,13 @@ router.get('/api', function(req, res) {
 			var query = {};
 		}
 
-		if (req.body && req.body.hasOwnProperty("core") && req.body.core == false) {
+		if (req.body && req.body.hasOwnProperty("core") && req.body.core == false) { 
+			console.log(query);
 			var collection = db.collection('other');
 		} else {
 			var collection = db.collection('cocktails');
 		}
+		
 		var cursor = collection.find(query);
 		handleCursor(cursor, req, res);
 	});
@@ -166,7 +167,7 @@ function parseBody(body, res) {
 }
 
 router.post('/api', function(req, res) {
-	MongoClient.connect("mongodb://localhost:27017/other", function(err, db) {
+	MongoClient.connect("mongodb://localhost:27017/cocktails", function(err, db) {
 		if (err) {
 			res.status(500).send({"msg": "db is down"});
 		}

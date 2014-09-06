@@ -22,22 +22,32 @@ cocktailData = JSON.parse(cocktailData);
 var MongoClient = require('mongodb').MongoClient;
 function handleDBErr(err, result) {
 	if (err) {
-		console.log("DB errored with result: " + result);
+		console.log("DB errored with result: " + result + " and error: " + err);
 	} else {
 		console.log("Success!");
 	}
 }
 
+function loadData(err, col) {
+	MongoClient.connect("mongodb://localhost:27017/cocktails", function(err, db) {
+		if(!err) {
+			// put our data in
+			var collection = db.collection('cocktails');
+			collection.insert(cocktailData.cocktails, {w:1}, handleDBErr);
+		}
+	});
+}
 
 // Connect to the db
 // TODO: fix the URL for heroku!
 MongoClient.connect("mongodb://localhost:27017/cocktails", function(err, db) {
 	if(!err) {
 		console.log("We are connected");
-
-		// put our data in
 		var collection = db.collection('cocktails');
-		collection.insert(cocktailData.cocktails, {w:1}, handleDBErr);
+		collection.drop(function(err, col) {
+			col = db.collection('other');
+			col.drop(loadData);
+		});
 	}
 });
 
