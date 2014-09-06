@@ -50,7 +50,7 @@ function loadData(err, col) {
 
 // Connect to the db
 // TODO: fix the URL for heroku!
-MongoClient.connect("mongodb://localhost:27017/cocktails", function(err, db) {
+MongoClient.connect(app.get('mongo'), function(err, db) {
 	if(!err) {
 		console.log("We are connected");
 		var collection = db.collection('cocktails');
