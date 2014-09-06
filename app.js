@@ -25,6 +25,8 @@ var cocktailData = fs.readFileSync('./cocktails.json', { "encoding": "utf8" });
 cocktailData = JSON.parse(cocktailData);
 // console.log(data);
 
+app.set('mongo', (process.env.MONGOHQ_URL || "mongodb://localhost:27017/cocktails"));
+
 // Retrieve
 var MongoClient = require('mongodb').MongoClient;
 function handleDBErr(err, result) {
@@ -36,7 +38,7 @@ function handleDBErr(err, result) {
 }
 
 function loadData(err, col) {
-	MongoClient.connect(PATH, function(err, db) {
+	MongoClient.connect(app.get('mongo'), function(err, db) {
 		if(!err) {
 			// put our data in
 			var collection = db.collection('cocktails');
