@@ -99,7 +99,7 @@ function returnObj (index, cursor, res, db) {
 }
 
 /* GET call to the API */
-router.get('/', execGet);
+router.get('/api', execGet);
 
 function execGet(req, res) { 
 	console.log(req.body);
@@ -108,6 +108,7 @@ function execGet(req, res) {
 	MongoClient.connect(app.get('mongo'), function(err, db) {
 		if (err) {
 			res.status(500).send({"msg": "db is down"});
+			db.close();
 			return;
 		}
 		if (req.body) {
@@ -183,6 +184,7 @@ function execPost(req, res) {
 		console.log(app.get('mongo'));
 		if (err) {
 			res.status(500).send({"msg": "db is down"});
+			db.close()
 			return;
 		}
 		if (req.body) {
