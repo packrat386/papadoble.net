@@ -45,7 +45,8 @@ function makeQuery(body) {
 		try {
 			query["_id"] = new ObjectID(body["id"]);
 		} catch (err) {
-			res.status(400).send('{"msg": "bad id"}');
+			// give a bogus value if its bad
+			query["_id"] = new ObjectID("ffffffffffffffffffffffff");
 		}
 	}
 	return query;
