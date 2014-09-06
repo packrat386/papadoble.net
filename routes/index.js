@@ -117,6 +117,7 @@ function execGet(req, res, count) {
 				res.status(500).send({"msg": "db is down"});
 				return;
 			} else {
+				console.log("try count is at: " + count);
 				execGet(req, res, count + 1);
 				return;
 			}
@@ -200,6 +201,7 @@ function execPost(req, res, count) {
 				res.status(500).send({"msg": "db is down"});
 				return;
 			} else {
+				console.log("try count is at: " + count);
 				execPost(req, res, count + 1);
 				return;
 			}
