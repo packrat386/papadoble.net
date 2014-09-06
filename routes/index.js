@@ -187,9 +187,11 @@ router.post('/api', function(req, res) {
 				var r = parseBody(req.body, res);
 			} catch (err) {
 				res.status(500).send({"msg": "couldn't parse that, got err: " + err});
+				return;
 			}
 		} else {
 			res.status(400).send("no request");
+			return;
 		}
 		
 		var collection = db.collection('other');
