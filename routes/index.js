@@ -62,7 +62,7 @@ function handleCursor(cursor, req, res) {
 function returnHash(hash, cursor, res) {
 	cursor.count(function(err, count) {
 		if (count == 0) {
-			res.send("no match", 404);
+			res.status(400).send({"msg": "no match"});
 		} else {
 			returnObj(hash % count, cursor, res);
 		}
@@ -74,7 +74,7 @@ function returnHash(hash, cursor, res) {
 function returnRand (cursor, res) {
 	cursor.count(function(err, count) {
 		if (count == 0) {
-			res.send("no match", 404);
+			res.status(404).send({"msg": "no match"});
 		} else {
 			returnObj(getRandomInt(0, count), cursor, res);
 		}
@@ -86,9 +86,9 @@ function returnObj (index, cursor, res) {
 	cursor.nextObject(function(err, item) {
 		if (!err) {
 			console.log(item);
-			res.send(item, 200);
+			res.status(200).send(item);
 		} else {
-			res.send("we goofed on the index", 500);
+			res.status(500).send({"msg": "we goofed on the index"});
 		}
 	});
 }
@@ -100,25 +100,93 @@ router.get('/api', function(req, res) {
 	// TODO: fix the URL for heroku!
 	MongoClient.connect("mongodb://localhost:27017/cocktails", function(err, db) {
 		if (err) {
-			res.send("db is down", 500);
+			res.status(500).send({"msg": "db is down"});
 		}
-		var collection = db.collection('cocktails');
 		if (req.body) {
-		var query = makeQuery(req.body);
+			var query = makeQuery(req.body);
 		} else {
 			var query = {};
+		}
+
+		if (req.body && req.body.hasOwnProperty("core") && req.body.core == false) {
+			var collection = db.collection('other');
+		} else {
+			var collection = db.collection('cocktails');
 		}
 		var cursor = collection.find(query);
 		handleCursor(cursor, req, res);
 	});
 });
 
+function parseBody(body, res) {
+	var recipe = {};
+	if (body.hasOwnProperty("name")) {
+		recipe.name = "";
+		recipe.name += body.name;
+	} else {
+		res.status(400).send({"msg": "no name"});
+		return;
+	}
+
+	if (body.hasOwnProperty("ingredients")) {
+		recipe.ingredients = {};
+		for (var ing in body.ingredients) {
+			recipe.ingredients[ing] = "";
+			recipe.ingredients[ing] += body.ingredients[ing];
+		}
+	} else {
+		res.status(400).send({"msg": "no ingredients"});
+		return;
+	}
+
+	if (body.hasOwnProperty("instructions")) {
+		recipe.instructions = "";
+		recipe.instructions += body.instructions;
+	} else {
+		res.status(400).send({"msg": "no instructions"});
+		return;
+	}
+
+	if (body.hasOwnProperty("source")) {
+		recipe.source = "";
+		recipe.source += body.source;
+	} else {
+		res.status(400).send({"msg": "no source"});
+		return;
+	}
+
+	if (body.hasOwnProperty("book")) {
+		recipe.book = "";
+		recipe.book += body.book;
+	} else {
+		res.status(400).send({"msg": "no book"});
+		return;
+	}
+	return recipe
+}
+
+router.post('/api', function(req, res) {
+	MongoClient.connect("mongodb://localhost:27017/other", function(err, db) {
+		if (err) {
+			res.status(500).send({"msg": "db is down"});
+		}
+		if (req.body) {
+			try {
+				var r = parseBody(req.body, res);
+			} catch (err) {
+				res.status(500).send({"msg": "couldn't parse that, got err: " + err});
+			}
+		} else {
+			res.status(400).send("no request");
+		}
+		
+		var collection = db.collection('other');
+		collection.insert(r, {w:1}, function(err, result) {
+			if (!err) {
+				res.status(200).send({ "msg": "OK!", "result": result});
+			}
+		});
+	});	
+});
 
 module.exports = router;
-
-
-// collection.find().toArray(printFind);
-// var drinkQuery  = {
-//	"ingredients.Lime Juice": { $exists: true }
-// }
-// collection.find(drinkQuery).toArray(printFind);
