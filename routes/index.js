@@ -115,7 +115,7 @@ function execGet(req, res, count) {
 				res.status(500).send({"msg": "db is down"});
 				return;
 			} else {
-				execGet(req, res, count);
+				execGet(req, res, count + 1);
 				return;
 			}
 		}
