@@ -5,11 +5,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-if (process.env.MONGOHQ_URL != "") {
+if (process.env.MONGOHQ_URL != "" && process.env.MONGOHQ_URL != undefined) {
 	var PATH = process.env.MONGOHQ_URL;
 } else {
 	var PATH = "mongodb://localhost:27017/cocktails";
 }
+console.log(PATH);
 
 var routes = require('./routes/index');
 
