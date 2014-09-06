@@ -104,23 +104,14 @@ function returnObj (index, cursor, res) {
 /* GET call to the API */
 router.get('/api', execGet);
 
-function execGet(req, res, count) { 
-	if (typeof count === undefined) {
-		count = 0;
-	}
+function execGet(req, res) { 
 	console.log(req.body);
 	// Connect to the db
 	// TODO: fix the URL for heroku!
 	MongoClient.connect(app.get('mongo'), function(err, db) {
 		if (err) {
-			if (count > 2) {
-				res.status(500).send({"msg": "db is down"});
-				return;
-			} else {
-				console.log("try count is at: " + count);
-				execGet(req, res, count + 1);
-				return;
-			}
+			res.status(500).send({"msg": "db is down"});
+			return;
 		}
 		if (req.body) {
 			var query = makeQuery(req.body);
@@ -190,21 +181,12 @@ function parseBody(body, res) {
 
 router.post('/api', execPost);
 
-function execPost(req, res, count) {
-	if (typeof count === undefined) {
-		count = 0;
-	}
+function execPost(req, res) {
 	MongoClient.connect(app.get('mongo'), function(err, db) {
 		console.log(app.get('mongo'));
 		if (err) {
-			if (count > 2) {
-				res.status(500).send({"msg": "db is down"});
-				return;
-			} else {
-				console.log("try count is at: " + count);
-				execPost(req, res, count + 1);
-				return;
-			}
+			res.status(500).send({"msg": "db is down"});
+			return;
 		}
 		if (req.body) {
 			try {
