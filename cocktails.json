@@ -3,9 +3,9 @@
 	{
 	    "name": "Absinthe",
 	    "ingredients": {
-		"Absinthe": "1 oz",
-		"Sugar": "1 cube",
-		"Water": "3-4 oz"
+		"absinthe": "1 oz",
+		"sugar": "1 cube",
+		"water": "3-4 oz"
 	    },
 	    "instructions": "Using an absinthe spoon if available, slowly drip very cold clear water into the absinthe. The absinthe should turn slightly opaque as the cold water is added. After the water has been added, stir in the cube of sugar, and add ice if you like. Absinthe can also be had without the sugar",
 	    "source": "Wikihow",
@@ -14,7 +14,7 @@
 	{
 	    "name": "Agaurdiente",
 	    "ingredients": {
-		"Aguardiente": "1.5 oz"
+		"aguardiente": "1.5 oz"
 	    },
 	    "instructions": "Literally translated as 'firewater', this liquor is best enjoyed as a shot",
 	    "source": "Wikipedia",
@@ -23,9 +23,9 @@
 	{
 	    "name": "Americano",
 	    "ingredients": {
-		"Campari": "1 oz",
-		"Vermouth": "1 oz",
-		"Soda Water": "1 oz"
+		"campari": "1 oz",
+		"vermouth": "1 oz",
+		"soda water": "1 oz"
 	    },
 	    "instructions": "Pour the Campari and vermouth over ice into a glass. Add a splash of Soda Water and garnish with half an orange slice (Wikipedia)",
 	    "source": "Wikipedia",
@@ -43,8 +43,8 @@
 	{
 	    "name": "Brandy and Soda",
 	    "ingredients": {
-		"Brandy": "2 oz",
-		"Soda Water": "4 oz"
+		"brandy": "2 oz",
+		"soda water": "4 oz"
 	    },
 	    "instructions": "Pour the Brandy into a large glass. Add ice and top off with soda water. Hemingway preferred Perrier",
 	    "source": "Garden of Eden",
@@ -53,10 +53,10 @@
 	{
 	    "name": "Bailey",
 	    "ingredients": {
-		"Gin": "1.5 oz",
-		"Grapefruit Juice": ".5 oz",
-		"Lime Juice": ".5 oz",
-		"Fresh Mint": "1 sprig"
+		"gin": "1.5 oz",
+		"grapefruit juice": ".5 oz",
+		"lime juice": ".5 oz",
+		"fresh mint": "1 sprig"
 	    },
 	    "instructions": "Tear up the mint first and put it in the shaker, adding the gin soon after. After letting the gin sit for a bit, add the grapefruit and lime juices. Stir with ice and garnish with a sprig of mint",
 	    "source": "WSJ",
@@ -65,12 +65,12 @@
 	{
 	    "name": "Bloody Mary",
 	    "ingredients": {
-		"Vodka": "1.5 oz",
-		"Tomato Juice": "3 oz",
-		"Lemon Juice": ".5 oz",
-		"Woscestershire Sauce": "dash",
-		"Tabasco": "dash",
-		"Salt and Pepper": "dash"
+		"vodka": "1.5 oz",
+		"tomato juice": "3 oz",
+		"lemon juice": ".5 oz",
+		"woscestershire sauce": "dash",
+		"tabasco": "dash",
+		"salt and pepper": "dash"
 	    },
 	    "instructions": "Add the Worcestershire Sauce, Tabasco, and salt and pepper to a large glass, then pour in the liquid ingredients with ice. Garnish with a lemon wedge and/or a celery stalk",
 	    "source": "Wikipedia",
@@ -79,9 +79,9 @@
 	{
 	    "name": "Cayo Hueso la Floridita",
 	    "ingredients": {
-		"White Rum": "2 oz",
-		"Lime Juice": ".5 oz",
-		"Grapefruit Soda": "3 oz"
+		"white rum": "2 oz",
+		"lime juice": ".5 oz",
+		"grapefruit soda": "3 oz"
 	    },
 	    "instructions": "Mix the ingredients in a large glass with ice. Garnish with a lime wedge",
 	    "source": "Swizzlesticks",
@@ -90,10 +90,10 @@
 	{
 	    "name": "Champagne Cocktail",
 	    "ingredients": {
-		"Champagne": "3 oz",
-		"Cognac": "1 oz",
-		"Angostura Bitters": "2 dashes",
-		"Sugar": "1 cube"
+		"champagne": "3 oz",
+		"cognac": "1 oz",
+		"angostura bitters": "2 dashes",
+		"sugar": "1 cube"
 	    },
 	    "instructions": "Add the bitters over the sugar cube in a champagne flute. Then, add the cognac and  chilled champagne. Garnish with an orange slice and a maraschino cherry",
 	    "source": "Wikipedia",
@@ -102,9 +102,9 @@
 	{
 	    "name": "Cuba Libre",
 	    "ingredients": {
-		"White Rum": "1.5 oz",
-		"Cola": "4 oz",
-		"Lime Juice": ".5 oz"
+		"white rum": "1.5 oz",
+		"cola": "4 oz",
+		"lime juice": ".5 oz"
 	    },
 	    "instructions": "Mix all ingredients in a highball glass with ice. Garish with a lime wedge",
 	    "source": "Wikipedia",
@@ -113,10 +113,10 @@
 	{
 	    "name": "Daquiri Papa Doble",
 	    "ingredients": {
-		"White Rum": "2 oz",
-		"Grapefruit Juice": ".75 oz",
-		"Lime Juice": ".5 oz",
-		"Maraschino Liqueur": ".25 oz"
+		"white rum": "2 oz",
+		"grapefruit juice": ".75 oz",
+		"lime juice": ".5 oz",
+		"maraschino liqueur": ".25 oz"
 	    },
 	    "instructions": "Mix all ingredients in a shaker, shake with ice and serve in a martini glass. Garnish with a lime wedge",
 	    "source": "Wikipedia",
@@ -125,8 +125,8 @@
 	{
 	    "name": "Death in the afternoon",
 	    "ingredients": {
-		"Absinthe": "1.5 oz",
-		"Champagne": "1 glass"
+		"absinthe": "1.5 oz",
+		"champagne": "1 glass"
 	    },
 	    "instructions": "Hemingway said it best. 'Pour one jigger absinthe into a Champagne glass. Add iced Champagne until it attains the proper opalescent milkiness. Drink three to five of these slowly'",
 	    "source": "Wikipedia",
@@ -135,10 +135,10 @@
 	{
 	    "name": "Death in the Gulfstream",
 	    "ingredients": {
-		"Gin": "2 oz",
-		"Lime Juice": "1 oz",
-		"Angostura Bitters": "4 dash",
-		"Lime Zest": "1 lime's worth"
+		"gin": "2 oz",
+		"lime Juice": "1 oz",
+		"angostura bitters": "4 dash",
+		"lime zest": "1 lime's worth"
 	    },
 	    "instructions": "Shake all ingredients with ice and strain into a glass filled with ice",
 	    "source": "Difford's Guide",
@@ -147,10 +147,10 @@
 	{
 	    "name": "Farewell to Hemingway",
 	    "ingredients": {
-		"Kirsch": "2.25 oz",
-		"Lime Juice": "1.5 oz",
-		"Cherry Syrup": ".5 oz",
-		"Club Soda": "1 oz"
+		"kirsch": "2.25 oz",
+		"lime juice": "1.5 oz",
+		"cherry syrup": ".5 oz",
+		"club soda": "1 oz"
 	    },
 	    "instructions": "Shake the kirsch, lime juice, and syrup with ice, pour into a collins glass with ice cubes. Top with club soda. Garnish with a large lime peel.",
 	    "source": "Washington Post",
@@ -159,8 +159,8 @@
 	{
 	    "name": "Gimlet",
 	    "ingredients": {
-		"Gin": "3 oz",
-		"Sweetened Lime Juice": "1 oz"
+		"gin": "3 oz",
+		"sweetened lime juice": "1 oz"
 	    },
 	    "instructions": "Mix and serve, garnish with a slice of lime",
 	    "source": "Wikipedia",
@@ -169,8 +169,8 @@
 	{
 	    "name": "Gin and Tonic",
 	    "ingredients": {
-		"Gin": "2 oz",
-		"Tonic": "4 oz"
+		"gin": "2 oz",
+		"tonic water": "4 oz"
 	    },
 	    "instructions": "Mix in a glass with ice, garnish with whatever you want",
 	    "source": "Wikipedia",
@@ -179,8 +179,8 @@
 	{
 	    "name": "Gluhwein",
 	    "ingredients": {
- 		"Wine": "1 bottle",
-		"Mulling Spices": "check spice package"
+ 		"wine": "1 bottle",
+		"mulling spices": "check spice package"
 	    },
 	    "instructions": "Heat the wine with the spices. Drink warm in a mug and garnish with an orange slice",
 	    "source": "Wikipedia",
@@ -189,10 +189,10 @@
 	{
 	    "name": "Green Isaac's Specia",
 	    "ingredients": {
-		"Gin": "2 oz",
-		"Coconut Water": "4 oz",
-		"Lime Juice": "1 oz",
-		"Angostura Bitters": "4 dashes"
+		"gin": "2 oz",
+		"coconut water": "4 oz",
+		"lime juice": "1 oz",
+		"angostura bitters": "4 dashes"
 	    },
 	    "instructions": "Shake with ice and pour unstrained into a tall glass. Garnish with a wedge of lime.",
 	    "source": "Phillip Greene",
@@ -201,9 +201,9 @@
 	{
 	    "name": "Jack Rose",
 	    "ingredients": {
-		"Applejack": "2 oz",
-		"Lime Juice": "1 oz",
-		"Grenadine Syrup": ".5 oz"
+		"applejack": "2 oz",
+		"lime juice": "1 oz",
+		"grenadine syrup": ".5 oz"
 	    },
 	    "instructions": "Shake and pour into a chilled glass. Garnish with a cherry and slice of apple. Serve",
 	    "source": "Wikipedia",
@@ -212,8 +212,8 @@
 	{
 	    "name": "Martini",
 	    "ingredients": {
-		"Gin": "2 oz",
-		"Vermouth": ".25 oz"
+		"gin": "2 oz",
+		"vermouth": ".25 oz"
 	    },
 	    "instructions": "Shake with ice and strain into a glass. Garnish with an olice",
 	    "source": "Wikipedia",
@@ -222,11 +222,11 @@
 	{
 	    "name": "Mojito",
 	    "ingredients": {
-		"White Rum": "1.5 oz",
-		"Lime Juice": "1 oz",
-		"Mint": "6 Leaves",
-		"Sugar": "2 tsp",
-		"Soda Water": "to taste"
+		"white rum": "1.5 oz",
+		"lime juice": "1 oz",
+		"mint": "6 Leaves",
+		"sugar": "2 tsp",
+		"soda water": "to taste"
 	    },
 	    "instructions": "Muddle mint sprigs with lime juice and sugar in a Collins glass. Add rum, ice, and top with soda water. Garnish with a sprig of mint.",
 	    "source": "Wikipedia",
@@ -235,9 +235,9 @@
 	{
 	    "name": "Negroni",
 	    "ingredients": {
-		"Gin": "1 oz",
-		"Sweet Red Vermouth": "1 oz",
-		"Campari": "1 oz"
+		"gin": "1 oz",
+		"wweet red vermouth": "1 oz",
+		"campari": "1 oz"
 	    },
 	    "instructions": "Stir into a glass over ice. Garnish with an orange peel.",
 	    "source": "Wikipedia",
@@ -246,9 +246,9 @@
 	{
 	    "name": "Pauline Hemingway's Rum Scoundrel",
 	    "ingredients": {
-		"White Rum": "1.5 oz",
-		"Lime Juice": ".5 oz",
-		"Brown Sugar": "1 tsp"
+		"white wum": "1.5 oz",
+		"lime juice": ".5 oz",
+		"brown sugar": "1 tsp"
 	    },
 	    "instructions": "Add to a shaker with ice, and shake '75 times'. Strain into a chilled cocktail glass.",
 	    "source": "Phillip Greene",
@@ -257,10 +257,10 @@
 	{
 	    "name": "Pernod Cocktail",
 	    "ingredients": {
-		"Pernod": "2 oz",
-		"Water": ".5 oz",
-		"Bitters": "4 dashes",
-		"Sugar": ".5 tsp"
+		"pernod": "2 oz",
+		"water": ".5 oz",
+		"angostura bitters": "4 dashes",
+		"sugar": ".5 tsp"
 	    },
 	    "instructions": "Mix the ingredients til the sugar dissolves, then add ice.",
 	    "source": "answers.com",
@@ -269,8 +269,8 @@
 	{
 	    "name": "Pink Gin",
 	    "ingredients": {
-		"Gin": "1 glass",
-		"Angostura Bitters": "1 dash"
+		"gin": "1 glass",
+		"angostura bitters": "1 dash"
 	    },
 	    "instructions": "Coat a chilled cocktail glass with bitters, then fill with chilled gin. Garnish with a slice of lemon peel.",
 	    "source": "Wikipedia",
@@ -279,13 +279,13 @@
 	{
 	    "name": "Rum Swizzle",
 	    "ingredients": {
-		"White Rum": "4 oz",
-		"Dark Rum": "4 oz",
-		"Lemon Juice": "1 oz",
-		"Pineapple Juice": ".5 oz",
-		"Orange Juice": ".5 oz",
-		"Bermuda Falernum": "2 oz",
-		"Angostura Bitters": "6 dash"
+		"white rum": "4 oz",
+		"dark rum": "4 oz",
+		"lemon juice": "1 oz",
+		"pineapple juice": ".5 oz",
+		"orange juice": ".5 oz",
+		"bermuda falernum": "2 oz",
+		"angostura bitters": "6 dash"
 	    },
 	    "instructions": "Shake in a pitcher with crushed ice. Strain into glasses and garnish with a slice of orange and a cherry. Serves 6",
 	    "source": "Wikipedia",
@@ -294,8 +294,8 @@
 	{
 	    "name": "Scotch and Lime Juice",
 	    "ingredients": {
-		"Blended Scotch": "3 oz",
-		"Lime Juice": ".5 oz"
+		"blended scotch": "3 oz",
+		"lime juice": ".5 oz"
 	    },
 	    "instructions": "Mix in an old fashioned glass with ice.",
 	    "source": "esquire.com",
@@ -304,9 +304,9 @@
 	{
 	    "name": "Vermouth Panache",
 	    "ingredients": {
-		"French Vermouth": "3 oz",
-		"Italian Vermouth": "1.5 oz",
-		"Angostura Bitters": "1 dash"
+		"french vermouth": "3 oz",
+		"italian vermouth": "1.5 oz",
+		"angostura bitters": "1 dash"
 	    },
 	    "instructions": "Add to a glass with ice, stir and serve",
 	    "source": "Phillip Greene/Hemingway",
@@ -315,9 +315,9 @@
 	{
 	    "name": "Villa America Special",
 	    "ingredients": {
-		"Cognac": "1.5 oz",
-		"Cointreau": "1 oz",
-		"Lemon Juice": ".75 oz"
+		"cognac": "1.5 oz",
+		"cointreau": "1 oz",
+		"lemon juice": ".75 oz"
 	    },
 	    "instructions": "Coat the rim of a chilled glass with sugar and lemon juice. Shake the ingredients with ice then strain into a glass.",
 	    "source": "Phillip Greene",
@@ -326,8 +326,8 @@
 	{
 	    "name": "Whiskey and Ginger Ale",
 	    "ingredients": {
-		"Rye Whiskey": "1.5 oz",
-		"Ginger Ale": "1 glass"
+		"rye whiskey": "1.5 oz",
+		"ginger ale": "1 glass"
 	    },
 	    "instructions": "Fill Highball glass with ice. Add whiskey and top with ginger ale.",
 	    "source": "Liquor.com",
@@ -336,8 +336,8 @@
 	{
 	    "name": "Scotch and Soda",
 	    "ingredients": {
-		"Blended Scotch": "1.5 oz",
-		"Soda Water": "4.5 oz"
+		"blended scotch": "1.5 oz",
+		"soda water": "4.5 oz"
 	    },
 	    "instructions": "Put some ice in a highball glass. Add the scotch then the soda, and stir.",
 	    "source": "wikihow",
@@ -346,9 +346,9 @@
 	{
 	    "name": "Whiskey Sour",
 	    "ingredients": {
-		"Bourbon Whiskey": "1.5 oz",
-		"Lemon Juice": "1 oz",
-		"Gomme Syrup": ".5 oz"
+		"bourbon whiskey": "1.5 oz",
+		"lemon juice": "1 oz",
+		"gomme syrup": ".5 oz"
 	    },
 	    "instructions": "Shake with ice and strain into an ice-filled old-fashioned glass.",
 	    "source": "Wikipedia",
@@ -357,10 +357,10 @@
 	{
 	    "name": "White Lady",
 	    "ingredients": {
-		"Gin": "2 oz",
-		"Cointreau": ".5 oz",
-		"Lemon Juice": ".5 oz",
-		"Egg White": "one"
+		"gin": "2 oz",
+		"cointreau": ".5 oz",
+		"lemon juice": ".5 oz",
+		"egg white": "one"
 	    },
 	    "instructions": "Shake all ingredients with ice and strain into a martini glass.",
 	    "source": "liquor.com",

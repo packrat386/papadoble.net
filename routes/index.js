@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var MongoClient = require('mongodb').MongoClient;
+var ObjectID = require('mongodb').ObjectID;
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -32,11 +33,25 @@ function makeQuery(body) {
 	if (body.hasOwnProperty("book")) {
 		query["book"] = makeRegex(body["book"]);
 	}
+	if (body.hasOwnProperty("ingredient")) {
+		prop = "ingredients." + body["ingredient"].toLowerCase();
+		query[prop] = { $exists: true };  
+	}
+	if (body.hasOwnProperty("id")) {
+		query["_id"] = new ObjectID(body["id"]);
+	}
+	return query;
+}
+
+function makeRegex(str) {
+	// ty StackOverflow
+	var regex = new RegExp(["^",str,"$"].join(""),"i");
+	return regex;
 }
 
 // get the requisite item out of a cursor
 function handleCursor(cursor, req, res) {
-	if (res.body.hasOwnProperty('story')) {
+	if (res.body && res.body.hasOwnProperty('story')) {
 		returnHash(hash, cursor, res);
 	} else {
 		returnRand(cursor, res);
@@ -48,8 +63,9 @@ function returnHash(hash, cursor, res) {
 	cursor.count(function(err, count) {
 		if (count == 0) {
 			res.send("no match", 404);
+		} else {
+			returnObj(hash % count, cursor, res);
 		}
-		returnObj(hash % count, cursor, res);
 	});
 
 }
@@ -59,8 +75,9 @@ function returnRand (cursor, res) {
 	cursor.count(function(err, count) {
 		if (count == 0) {
 			res.send("no match", 404);
+		} else {
+			returnObj(getRandomInt(0, count), cursor, res);
 		}
-		returnObj(getRandomInt(0, count), cursor, res);
 	});
 } 
 
@@ -68,6 +85,7 @@ function returnObj (index, cursor, res) {
 	cursor.skip(index);
 	cursor.nextObject(function(err, item) {
 		if (!err) {
+			console.log(item);
 			res.send(item, 200);
 		} else {
 			res.send("we goofed on the index", 500);
@@ -85,8 +103,11 @@ router.get('/api', function(req, res) {
 			res.send("db is down", 500);
 		}
 		var collection = db.collection('cocktails');
-		var query = {};
-
+		if (req.body) {
+		var query = makeQuery(req.body);
+		} else {
+			var query = {};
+		}
 		var cursor = collection.find(query);
 		handleCursor(cursor, req, res);
 	});
