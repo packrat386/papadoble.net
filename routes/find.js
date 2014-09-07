@@ -18,7 +18,7 @@ router.get('/', function(req, res) {
 		var statusCode = resp.statusCode;
 		// console.log(resp);
 		// console.log(body);
-		res.render('find', { title: 'Find a Drink', res: JSON.stringify(body, undefined, 2)});
+		res.render('find', { title: 'Find a Drink', req: "$ curl -XGET -H \"Content-Type:application/json\" http://papadoble.herokuapp.com/api", res: JSON.stringify(body, undefined, 2)});
 	});
 });
 
@@ -50,7 +50,7 @@ router.post('/', function(req, res) {
 		var statusCode = resp.statusCode;
 		// console.log(resp);
 		console.log(body);
-		res.render('find', { title: 'Find a Drink', res: JSON.stringify(body, undefined, 2)});
+		res.render('find', { title: 'Find a Drink', req: "$ curl -XGET -d '" + JSON.stringify(reqobj.json) + "' -H \"Content-Type:application/json\" http://papadoble.herokuapp.com/api", res: JSON.stringify(body, undefined, 2)});
 	});
 });
 
